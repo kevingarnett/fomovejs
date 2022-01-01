@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kevingarnett/fomovejs/issues"
   },
-  "homepage": "https://github.com/kevingarnett/fomovejs#readme"
+  "homepage": "https://github.com/kevingarnett/fomovejs#readme",
+  "dependencies": {
+    "r-wrapper": "^1.1.2"
+  }
 }
