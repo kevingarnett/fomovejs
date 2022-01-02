@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kevingarnett/fomovejs#readme",
   "dependencies": {
+    "prompts": "^2.4.2",
     "r-wrapper": "^1.1.2"
   }
 }
