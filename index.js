@@ -17,7 +17,7 @@ const player_lookup = require('./lib/player_lookup');
   const selectPlayer = await prompts({
     type: 'select',
     name: 'value',
-    message: 'Which Player?',
+    message: `Which ${response['value']}?`,
     choices: players.map((player) => {
 
       if (player['first_name'] != null) {
