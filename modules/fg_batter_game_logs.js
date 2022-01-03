@@ -1,6 +1,7 @@
 const prompts = require('prompts');
 const fangraphs = require('../lib/fangraphs');
-const player_lookup = require('../lib/player_lookup')
+const playerLookup = require('../lib/player_lookup');
+const saveToFile = require('../modules/display_or_save_data');
 
 exports.run = async function() {
     // Ask for player name
@@ -11,7 +12,7 @@ exports.run = async function() {
         validate: value => value.length < 1 ? `Field can not be blank` : true
     });
 
-    players = await player_lookup.findByName(response['value'])
+    players = await playerLookup.findByName(response['value'])
 
     // Filter all players that do not have a fangraphs id
     players = players.filter(player => player.fangraphs_id != null);
@@ -43,12 +44,13 @@ exports.run = async function() {
         type: 'number',
         name: 'value',
         message: 'Targeted Season?',
+        initial: new Date().getFullYear(),
         hint: "Looking for a four digit year (eg. 2021)"
     });
 
     // Fetch Batter Game Logs from Fangraphs
     data = await fangraphs.batterGameLogs(selectedPlayer.value.fangraphs_id, targetedSeason.value);
 
-    // Display
-    console.log(data);
+    // Output
+    saveToFile.displayOrSave(data, `${selectedPlayer.value.first_name}_${selectedPlayer.value.last_name}-${targetedSeason.value}-fangraphs_batter_logs.json`);
 }
