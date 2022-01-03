@@ -4,6 +4,10 @@ const MODULES = [
     {
         title: "Player Search",
         value: "../modules/player_lookup"
+    },
+    {
+        title: "Fangraphs - Batter Game Logs",
+        value: "../modules/fg_batter_game_logs"
     }
 ];
 
