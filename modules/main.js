@@ -16,6 +16,10 @@ const MODULES = [
     {
         title: "Baseball Reference - Daily Batter Performance (Date Range)",
         value: "../modules/daily_batter_bref"
+    },
+    {
+        title: "Baseball Reference - Daily Pitcher Performance (Date Range)",
+        value: "../modules/daily_pitcher_bref"
     }
 ];
 
