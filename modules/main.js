@@ -13,6 +13,10 @@ const MODULES = [
         title: "Fangraphs - Pitcher Game Logs",
         value: "../modules/fg_pitcher_game_logs"
     },
+    {
+        title: "Baseball Reference - Daily Batter Performance (Date Range)",
+        value: "../modules/daily_batter_bref"
+    }
 ];
 
 exports.run = async function() {

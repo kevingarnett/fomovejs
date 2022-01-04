@@ -8,7 +8,7 @@ exports.displayOrSave = async function(data, fileName) {
         type: 'confirm',
         name: 'value',
         initial: true,
-        message: 'Save output to file?'
+        message: 'Save output to file? (Some result sets are very large and do not display well on screen)'
     });
 
     if (saveToFile.value) {
@@ -18,7 +18,7 @@ exports.displayOrSave = async function(data, fileName) {
 
         console.log(`output written to ${fileName}`);
     } else {
-        console.log(data);
+        console.table(data);
     }
 
 }
