@@ -8,7 +8,11 @@ const MODULES = [
     {
         title: "Fangraphs - Batter Game Logs",
         value: "../modules/fg_batter_game_logs"
-    }
+    },
+    {
+        title: "Fangraphs - Pitcher Game Logs",
+        value: "../modules/fg_pitcher_game_logs"
+    },
 ];
 
 exports.run = async function() {
