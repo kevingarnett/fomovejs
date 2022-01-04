@@ -14,6 +14,11 @@ exports.run = async function() {
 
     players = await playerLookup.findByName(response['value'])
 
+    if (players.length == 0) {
+        console.log("No players found.");
+        return;
+    }
+
     // Filter all players that do not have a fangraphs id
     players = players.filter(player => player.fangraphs_id != null);
 
@@ -49,8 +54,16 @@ exports.run = async function() {
     });
 
     // Fetch Batter Game Logs from Fangraphs
-    data = await fangraphs.batterGameLogs(selectedPlayer.value.fangraphs_id, targetedSeason.value);
+    try {
+        data = await fangraphs.batterGameLogs(selectedPlayer.value.fangraphs_id, targetedSeason.value);
 
-    // Output
-    saveToFile.displayOrSave(data, `${selectedPlayer.value.first_name}_${selectedPlayer.value.last_name}-${targetedSeason.value}-fangraphs_batter_logs.json`);
+        if (data.length == 0) {
+            console.log(`No data found for ${selectedPlayer.value.first_name} ${selectedPlayer.value.last_name} in ${targetedSeason.value}`)
+        }
+    
+        // Output
+        saveToFile.displayOrSave(data, `${selectedPlayer.value.first_name}_${selectedPlayer.value.last_name}-${targetedSeason.value}-fangraphs_batter_logs.json`);
+    } catch(err) {
+        console.log(`No data for ${selectedPlayer.value.first_name} ${selectedPlayer.value.last_name} in ${targetedSeason.value}`);
+    }
 }
